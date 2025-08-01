@@ -338,6 +338,9 @@ button.primary-btn:hover {
   #answers {
     grid-template-columns: 1fr;
   }
+  #quiz-container{
+    min-height: 100vh;
+  }
 }
 
 @media (max-width: 480px) {
