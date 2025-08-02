@@ -28,7 +28,6 @@ body {
   background-color: #0f172a;
 }
 
-/* Particle Canvas Style */
 #particle-canvas {
   position: fixed;
   top: 0;
@@ -38,7 +37,7 @@ body {
   z-index: -1;
 }
 
-/* Home Screen Styles */
+/* Home Screen */
 #home-screen {
   text-align: center;
   color: white;
@@ -51,6 +50,14 @@ body {
   padding: 2rem 3rem;
   border-radius: 20px;
   backdrop-filter: blur(5px);
+}
+
+.home-content h1 {
+  font-size: 4rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: white;
+  text-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
 
 .home-content p {
@@ -74,17 +81,20 @@ body {
   border-radius: 50px;
 }
 
-/* Main Quiz Container */
+/* Quiz Container */
 #quiz-container {
   width: 90%;
   max-width: 800px;
   background: rgba(255, 255, 255, 0.6);
+  padding: 3rem;
   border-radius: 20px;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
   text-align: center;
   backdrop-filter: blur(15px);
   border: 1px solid rgba(255, 255, 255, 0.2);
   transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  overflow-y: auto;
+  max-height: 90vh;
 }
 
 .hide {
@@ -117,6 +127,7 @@ h1 {
 }
 
 h2 {
+  font-size: 1.7rem;
   margin: 1.5rem 0;
   color: var(--dark);
   font-weight: 600;
@@ -192,6 +203,14 @@ button.primary-btn:hover {
   margin-bottom: 0.5rem;
 }
 
+.quiz-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  gap: 20px;
+}
+
 .progress-container {
   flex-grow: 1;
   height: 10px;
@@ -212,6 +231,13 @@ button.primary-btn:hover {
   font-weight: 600;
   color: var(--primary);
   white-space: nowrap;
+}
+
+#answers {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin: 2rem 0;
 }
 
 .answer-btn {
@@ -261,18 +287,20 @@ button.primary-btn:hover {
 }
 
 #next-btn {
-  align-self: flex-end;
-  margin-top: 20px;
+  display: block;
+  margin: 20px auto 0 auto;
+  padding: 14px 30px;
+  font-size: 1.1rem;
+  max-width: 200px;
 }
 
-/* Result Screen Styles */
+/* Result Screen */
 .result-icon i {
   font-size: 5rem;
   margin-bottom: 1rem;
   display: inline-block;
 }
 
-/* High Score Result */
 .result-high-score .result-icon i {
   color: var(--gold);
   animation: bounce 1s, sparkle 1.5s ease-in-out infinite;
@@ -282,7 +310,6 @@ button.primary-btn:hover {
   color: var(--gold);
 }
 
-/* Low Score Result */
 .result-low-score .result-icon i {
   color: var(--encouragement);
   animation: float 3s ease-in-out infinite;
@@ -303,115 +330,20 @@ button.primary-btn:hover {
   font-size: 1.2rem;
 }
 
-@keyframes bounce {
-  0%, 20%, 50%, 80%, 100% {
-    transform: translateY(0);
-  }
-  40% {
-    transform: translateY(-30px);
-  }
-  60% {
-    transform: translateY(-15px);
-  }
-}
-
-@keyframes sparkle {
-  0%, 100% {
-    text-shadow: 0 0 10px #fff, 0 0 20px var(--gold), 0 0 30px var(--gold);
-  }
-  50% {
-    text-shadow: 0 0 20px #fff, 0 0 30px var(--gold), 0 0 40px var(--gold);
-  }
-}
-
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* --- Base Mobile Styles (Default) --- */
-
-#answers {
-  display: grid;
-  gap: 15px;
-  margin: 2rem 0;
-  grid-template-columns: 1fr; /* This makes it a single vertical column */
-}
-
-#quiz-container {
-  padding: 1.5rem;
-  min-height: 100vh;
-}
-
-h2 {
-  font-size: 1.4rem;
-}
-
-.home-content h1 {
-  font-size: 2.5rem;
-}
-
-.quiz-header {
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-.progress-container {
-  width: 100%;
-  margin-bottom: 0.5rem;
-}
-
-/* --- Tablet and Larger Phones (min-width: 601px) --- */
-
-@media (min-width: 601px) {
-  #quiz-container {
-    min-height: auto;
-  }
-
-  .home-content h1 {
-    font-size: 3rem;
-  }
-
+/* Mobile Responsive */
+@media (max-width: 600px) {
   #answers {
-    grid-template-columns: 1fr 1fr; /* This makes it two columns */
+    grid-template-columns: 1fr;
   }
 
-  .quiz-header {
-    flex-direction: row;
-    align-items: center;
-  }
-}
-
-/* --- Desktops and Large Tablets (min-width: 769px) --- */
-
-@media (min-width: 769px) {
-  #quiz-container {
-    padding: 3rem;
+  #next-btn {
+    width: 100%;
+    font-size: 1rem;
   }
 
-  h2 {
-    font-size: 1.7rem;
-  }
-
-  .home-content h1 {
-    font-size: 4rem;
+  #quiz-screen {
+    overflow-y: auto;
+    max-height: 85vh;
+    padding-bottom: 2rem;
   }
 }
